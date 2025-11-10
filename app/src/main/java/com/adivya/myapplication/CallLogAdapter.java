@@ -1,5 +1,6 @@
 package com.adivya.myapplication;
 
+import android.graphics.drawable.GradientDrawable;
 import android.provider.CallLog;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -41,15 +43,20 @@ public class CallLogAdapter extends RecyclerView.Adapter<CallLogAdapter.CallLogV
         holder.callerNumberTextView.setText(entry.getNumber());
         holder.callTimeTextView.setText(DateUtils.getRelativeTimeSpanString(entry.getTime(), System.currentTimeMillis(), DateUtils.MINUTE_IN_MILLIS));
 
+        GradientDrawable background = (GradientDrawable) holder.callTypeIcon.getBackground();
+
         switch (entry.getType()) {
             case CallLog.Calls.INCOMING_TYPE:
                 holder.callTypeIcon.setImageResource(R.drawable.ic_call_received);
+                background.setColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.incoming_call_background));
                 break;
             case CallLog.Calls.OUTGOING_TYPE:
                 holder.callTypeIcon.setImageResource(R.drawable.ic_call_made);
+                background.setColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.outgoing_call_background));
                 break;
             case CallLog.Calls.MISSED_TYPE:
                 holder.callTypeIcon.setImageResource(R.drawable.ic_call_missed);
+                background.setColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.missed_call_background));
                 break;
         }
 

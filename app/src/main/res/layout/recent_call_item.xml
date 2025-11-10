@@ -15,12 +15,14 @@
             android:id="@+id/contact_photo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@mipmap/ic_launcher_round" />
+            android:src="@mipmap/ic_launcher_round"
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/contact_initial"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/circular_background"
             android:gravity="center"
             android:textColor="@android:color/white"
             android:textSize="20sp"
